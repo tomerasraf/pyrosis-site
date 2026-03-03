@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useSite } from '../../context/SiteContext'
 import styles from './Testimonials.module.css'
 
 const reviews = [
@@ -46,6 +47,8 @@ function Card({ r, i }) {
 export default function Testimonials() {
   const ref = useRef()
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const { config } = useSite()
+  const { eyebrow, title, stats } = config.testimonials
   const [page, setPage] = useState(0)
   const perPage = 3
   const total = Math.ceil(reviews.length / perPage)
@@ -60,16 +63,14 @@ export default function Testimonials() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65 }}
         >
-          <span className={styles.eyebrow}>Real Reviews</span>
-          <h2 className={styles.title}>
-            don't take<br /><em>our word for it.</em>
-          </h2>
+          <span className={styles.eyebrow}>{eyebrow}</span>
+          <h2 className={styles.title}>{title}</h2>
 
           <div className={styles.summaryRow}>
-            {[['4.9★', 'avg rating'], ['50K+', 'happy drinkers'], ['98%', 'would recommend']].map(([v, l]) => (
-              <div key={l} className={styles.summaryItem}>
-                <strong className={styles.summaryVal}>{v}</strong>
-                <span className={styles.summaryLabel}>{l}</span>
+            {stats.map(({ val, label }) => (
+              <div key={label} className={styles.summaryItem}>
+                <strong className={styles.summaryVal}>{val}</strong>
+                <span className={styles.summaryLabel}>{label}</span>
               </div>
             ))}
           </div>

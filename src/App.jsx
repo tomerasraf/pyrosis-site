@@ -1,7 +1,8 @@
-import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { lazy, Suspense, useEffect } from 'react'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
 import { AuthProvider } from './context/AuthContext'
+import { SiteProvider } from './context/SiteContext'
 import CartDrawer from './components/Cart/CartDrawer'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -23,6 +24,7 @@ const CheckoutPage     = lazy(() => import('./pages/CheckoutPage'))
 const OrderConfirmPage = lazy(() => import('./pages/OrderConfirmPage'))
 const AccountPage      = lazy(() => import('./pages/AccountPage'))
 const OrdersPage       = lazy(() => import('./pages/OrdersPage'))
+const AdminPage        = lazy(() => import('./pages/AdminPage'))
 
 function LandingPage() {
   return (
@@ -47,25 +49,48 @@ function PageLoader() {
   )
 }
 
+function AppInner() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isAdmin = location.pathname === '/admin'
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'A') navigate('/admin')
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [navigate])
+
+  return (
+    <>
+      {!isAdmin && <Navbar />}
+      {!isAdmin && <CartDrawer />}
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/"                        element={<LandingPage />} />
+          <Route path="/shop"                    element={<ShopPage />} />
+          <Route path="/product/:id"             element={<ProductPage />} />
+          <Route path="/checkout"                element={<CheckoutPage />} />
+          <Route path="/order-confirmation/:id"  element={<OrderConfirmPage />} />
+          <Route path="/account"                 element={<AccountPage />} />
+          <Route path="/account/orders"          element={<ProtectedRoute><OrdersPage /></ProtectedRoute>} />
+          <Route path="/admin"                   element={<AdminPage />} />
+        </Routes>
+      </Suspense>
+      {!isAdmin && <Footer />}
+    </>
+  )
+}
+
 export default function App() {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <Navbar />
-        <CartDrawer />
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/"                        element={<LandingPage />} />
-            <Route path="/shop"                    element={<ShopPage />} />
-            <Route path="/product/:id"             element={<ProductPage />} />
-            <Route path="/checkout"                element={<CheckoutPage />} />
-            <Route path="/order-confirmation/:id"  element={<OrderConfirmPage />} />
-            <Route path="/account"                 element={<AccountPage />} />
-            <Route path="/account/orders"          element={<ProtectedRoute><OrdersPage /></ProtectedRoute>} />
-          </Routes>
-        </Suspense>
-        <Footer />
-      </CartProvider>
-    </AuthProvider>
+    <SiteProvider>
+      <AuthProvider>
+        <CartProvider>
+          <AppInner />
+        </CartProvider>
+      </AuthProvider>
+    </SiteProvider>
   )
 }

@@ -1,22 +1,17 @@
 import { motion } from 'framer-motion'
+import { useSite } from '../../context/SiteContext'
 import styles from './Footer.module.css'
 
-const links = {
-  Shop:  ['All Flavors', 'Variety Packs', 'Subscribe & Save', 'Gift Cards'],
-  Learn: ['Our Story', 'Ingredients', 'Sustainability', 'Blog'],
-  Help:  ['FAQ', 'Shipping', 'Returns', 'Contact'],
-}
-
 export default function Footer() {
+  const { config } = useSite()
+  const { ctaHeadline, ctaBtnPrimary, ctaBtnSecondary, tagline, newsletterText, copyright, links } = config.footer
+
   return (
     <footer className={styles.footer}>
       {/* Big editorial CTA banner */}
       <div className={styles.ctaBanner}>
         <div className={styles.ctaInner}>
-          <h2 className={styles.ctaHeadline}>
-            ready to feel<br />
-            <em>fizzy?</em>
-          </h2>
+          <h2 className={styles.ctaHeadline}>{ctaHeadline}</h2>
           <div className={styles.ctaActions}>
             <motion.a
               href="#shop"
@@ -24,10 +19,10 @@ export default function Footer() {
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
             >
-              Shop All Flavors
+              {ctaBtnPrimary}
             </motion.a>
             <a href="#flavors" className={styles.ctaSecondary}>
-              Find your match →
+              {ctaBtnSecondary}
             </a>
           </div>
         </div>
@@ -44,7 +39,9 @@ export default function Footer() {
             <div className={styles.brand}>
               <span className={styles.logo}>PYROSIS<sup className={styles.tm}>®</sup></span>
               <p className={styles.tagline}>
-                Crafted with real fruit.<br />Made to make you smile.
+                {tagline.split('\n').map((line, i, arr) => (
+                  <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+                ))}
               </p>
               <div className={styles.socials}>
                 {['IG', 'TT', 'TW', 'YT'].map(s => (
@@ -73,7 +70,7 @@ export default function Footer() {
 
             <div className={styles.col}>
               <h5 className={styles.colTitle}>Stay Fizzy</h5>
-              <p className={styles.newsletterText}>New drops, deals, and fruit facts.</p>
+              <p className={styles.newsletterText}>{newsletterText}</p>
               <form className={styles.form} onSubmit={e => e.preventDefault()}>
                 <input type="email" placeholder="your@email.com" className={styles.input} />
                 <button type="submit" className={styles.submitBtn}>→</button>
@@ -82,7 +79,7 @@ export default function Footer() {
           </div>
 
           <div className={styles.legalRow}>
-            <span className={styles.copy}>© 2025 PYROSIS Inc.</span>
+            <span className={styles.copy}>{copyright}</span>
             <div className={styles.legal}>
               {['Privacy', 'Terms', 'Accessibility'].map(l => (
                 <a key={l} href="#" className={styles.legalLink}>{l}</a>

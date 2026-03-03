@@ -1,18 +1,14 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import FizzParticles from '../Hero/FizzParticles'
+import { useSite } from '../../context/SiteContext'
 import styles from './Benefits.module.css'
-
-const items = [
-  { icon: '🌿', title: 'Real Fruit Juice',    color: '#00A67E', desc: 'Every can starts with real, cold-pressed juice. Not concentrate. Not flavor packets. Actual fruit.' },
-  { icon: '⚡', title: 'Natural Lift',         color: '#E8B000', desc: 'A gentle boost from green tea & B-vitamins. Zero jitters. Zero crash. Just good vibes.' },
-  { icon: '🦠', title: '9 Billion Prebiotics', color: '#C8255A', desc: 'Your gut deserves love too. We pack in clinically-studied prebiotics in every single can.' },
-  { icon: '🚫', title: 'Nothing Fake',         color: '#6B24C2', desc: 'No artificial colors. No HFCS. No weird additives you can\'t pronounce. Promise.' },
-]
 
 export default function Benefits() {
   const ref = useRef()
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const { config } = useSite()
+  const { eyebrow, title, sub, claimNum, claimText, claimLink, items } = config.benefits
 
   return (
     <section className={styles.section} id="benefits" ref={ref}>
@@ -32,15 +28,9 @@ export default function Benefits() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65 }}
         >
-          <span className={styles.eyebrow}>Good Stuff Inside</span>
-          <h2 className={styles.title}>
-            soda that's<br />
-            <em>actually&nbsp;good</em><br />
-            for you.
-          </h2>
-          <p className={styles.sub}>
-            We read every label so you don't have to. Here's what's inside every PYROSIS can.
-          </p>
+          <span className={styles.eyebrow}>{eyebrow}</span>
+          <h2 className={styles.title}>{title}</h2>
+          <p className={styles.sub}>{sub}</p>
         </motion.div>
 
         <div className={styles.cards}>
@@ -68,11 +58,9 @@ export default function Benefits() {
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.5 }}
         >
-          <span className={styles.claimNum}>200+</span>
-          <span className={styles.claimText}>
-            batches tested before a single can left our garage.
-          </span>
-          <a href="#story" className={styles.claimLink}>Meet the obsessives →</a>
+          <span className={styles.claimNum}>{claimNum}</span>
+          <span className={styles.claimText}>{claimText}</span>
+          <a href="#story" className={styles.claimLink}>{claimLink}</a>
         </motion.div>
       </div>
     </section>

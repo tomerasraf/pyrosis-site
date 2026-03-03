@@ -1,22 +1,28 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import FizzParticles from './FizzParticles'
+import { useSite } from '../../context/SiteContext'
 import styles from './Hero.module.css'
 
-const flavors = [
-  { name: 'Citrus Burst',  emoji: '🍊', color: '#FF5C1A', dark: '#C43D08' },
-  { name: 'Berry Rush',    emoji: '🫐', color: '#C8255A', dark: '#8F1A40' },
-  { name: 'Tropical Wave', emoji: '🥭', color: '#00A67E', dark: '#007357' },
-]
-
 export default function Hero() {
+  const { config } = useSite()
+  const { kicker, sub, btnPrimary, btnGhost, stats, heroFlavors, heroImages } = config.hero
+  const flavors = heroFlavors.length > 0 ? heroFlavors : [{ name: 'Citrus Burst', emoji: '🍊', color: '#FF5C1A', dark: '#C43D08' }]
+  const images = heroImages && heroImages.filter(Boolean).length > 0 ? heroImages.filter(Boolean) : ['/images/product-hero.jpg']
   const [idx, setIdx] = useState(0)
-  const flavor = flavors[idx]
+  const [imgIdx, setImgIdx] = useState(0)
+  const flavor = flavors[idx % flavors.length]
 
   useEffect(() => {
     const t = setInterval(() => setIdx(i => (i + 1) % flavors.length), 4500)
     return () => clearInterval(t)
-  }, [])
+  }, [flavors.length])
+
+  useEffect(() => {
+    if (images.length <= 1) return
+    const t = setInterval(() => setImgIdx(i => (i + 1) % images.length), 4500)
+    return () => clearInterval(t)
+  }, [images.length])
 
   return (
     <section className={styles.hero} id="hero">
@@ -30,14 +36,22 @@ export default function Hero() {
         <FizzParticles color="#ffffff" />
       </motion.div>
 
-      {/* ── MASKED PRODUCT PHOTO ── */}
+      {/* ── MASKED PRODUCT PHOTO CAROUSEL ── */}
       <div className={styles.photoWrap}>
-        <img
-          src="/images/product-hero.jpg"
-          alt="Fizzr soda cans"
-          className={styles.productPhoto}
-          draggable={false}
-        />
+        <AnimatePresence mode="sync">
+          <motion.img
+            key={images[imgIdx % images.length]}
+            src={images[imgIdx % images.length]}
+            alt="Pyrosis soda"
+            className={styles.productPhoto}
+            draggable={false}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{ position: images.length > 1 ? 'absolute' : 'relative', inset: 0 }}
+          />
+        </AnimatePresence>
         <motion.div
           className={styles.photoOverlay}
           animate={{ backgroundColor: flavor.color }}
@@ -69,7 +83,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1, duration: 0.5 }}
         >
-          ✦ New flavors just dropped
+          {kicker}
         </motion.p>
 
         <motion.h1
@@ -101,8 +115,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.45, duration: 0.55 }}
         >
-          Refreshing &amp; all-natural.<br />
-          Real fruit. Zero compromise.
+          {sub}
         </motion.p>
 
         <motion.div
@@ -118,10 +131,10 @@ export default function Hero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
           >
-            SHOP ALL FLAVORS
+            {btnPrimary}
           </motion.a>
           <a href="#flavors" className={styles.btnGhost}>
-            See flavors ↓
+            {btnGhost}
           </a>
         </motion.div>
 
@@ -156,10 +169,10 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.85, duration: 0.5 }}
       >
-        {[['12+', 'flavors'], ['0g', 'added sugar'], ['9B', 'prebiotics'], ['100%', 'real fruit']].map(([n, l]) => (
-          <div key={l} className={styles.statItem}>
-            <strong className={styles.statN} style={{ color: flavor.color }}>{n}</strong>
-            <span className={styles.statL}>{l}</span>
+        {stats.map(({ num, label }) => (
+          <div key={label} className={styles.statItem}>
+            <strong className={styles.statN} style={{ color: flavor.color }}>{num}</strong>
+            <span className={styles.statL}>{label}</span>
           </div>
         ))}
       </motion.div>
