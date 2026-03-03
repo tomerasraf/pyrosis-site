@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext'
 import CartDrawer from './components/Cart/CartDrawer'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
+import ProtectedRoute from './components/Auth/ProtectedRoute'
 
 // Landing page sections
 import Hero from './components/Hero/Hero'
@@ -16,12 +17,12 @@ import FlavorExplorer from './components/FlavorExplorer/FlavorExplorer'
 import Testimonials from './components/Testimonials/Testimonials'
 
 // Pages (lazy loaded)
-// const ShopPage        = lazy(() => import('./pages/ShopPage'))
-// const ProductPage     = lazy(() => import('./pages/ProductPage'))
-// const CheckoutPage    = lazy(() => import('./pages/CheckoutPage'))
-// const OrderConfirmPage = lazy(() => import('./pages/OrderConfirmPage'))
-// const AccountPage     = lazy(() => import('./pages/AccountPage'))
-// const OrdersPage      = lazy(() => import('./pages/OrdersPage'))
+const ShopPage         = lazy(() => import('./pages/ShopPage'))
+const ProductPage      = lazy(() => import('./pages/ProductPage'))
+const CheckoutPage     = lazy(() => import('./pages/CheckoutPage'))
+const OrderConfirmPage = lazy(() => import('./pages/OrderConfirmPage'))
+const AccountPage      = lazy(() => import('./pages/AccountPage'))
+const OrdersPage       = lazy(() => import('./pages/OrdersPage'))
 
 function LandingPage() {
   return (
@@ -55,12 +56,12 @@ export default function App() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/"                        element={<LandingPage />} />
-            {/* <Route path="/shop"                    element={<ShopPage />} /> */}
-            {/* <Route path="/product/:id"             element={<ProductPage />} /> */}
-            {/* <Route path="/checkout"                element={<CheckoutPage />} />
+            <Route path="/shop"                    element={<ShopPage />} />
+            <Route path="/product/:id"             element={<ProductPage />} />
+            <Route path="/checkout"                element={<CheckoutPage />} />
             <Route path="/order-confirmation/:id"  element={<OrderConfirmPage />} />
             <Route path="/account"                 element={<AccountPage />} />
-            <Route path="/account/orders"          element={<OrdersPage />} /> */}
+            <Route path="/account/orders"          element={<ProtectedRoute><OrdersPage /></ProtectedRoute>} />
           </Routes>
         </Suspense>
         <Footer />

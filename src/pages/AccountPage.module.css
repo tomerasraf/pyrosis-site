@@ -1,0 +1,232 @@
+.page {
+  min-height: 100vh;
+  padding-top: 80px;
+  background: var(--cream);
+}
+
+.hero {
+  background: var(--forest);
+  color: var(--white);
+  text-align: center;
+  padding: 60px 24px 50px;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.9;
+}
+
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* Auth card */
+.authCard {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: 0 8px 40px -8px rgba(26,18,8,0.1);
+}
+
+.tabRow {
+  display: flex;
+  border-bottom: 2px solid var(--cream-dark);
+  margin-bottom: 32px;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: none;
+  font-family: var(--font-condensed);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.18s, border-color 0.18s;
+}
+
+.tabActive {
+  color: var(--citrus);
+  border-color: var(--citrus);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.input {
+  padding: 12px 14px;
+  border: 2px solid var(--cream-dark);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: var(--white);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.18s;
+}
+
+.input:focus {
+  border-color: var(--citrus);
+}
+
+.error {
+  font-size: 0.88rem;
+  color: var(--cherry);
+  padding: 10px 14px;
+  background: #fff0f0;
+  border-radius: var(--radius-sm);
+}
+
+.submitBtn {
+  padding: 16px;
+  border-radius: var(--radius-pill);
+  background: var(--citrus);
+  color: #fff;
+  font-family: var(--font-condensed);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  background: var(--muted);
+}
+
+/* Profile */
+.profileCard {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: 0 8px 40px -8px rgba(26,18,8,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--citrus);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.profileName {
+  font-size: 1.8rem;
+  color: var(--ink);
+}
+
+.profileEmail {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.profileLinks {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.profileLink {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: var(--cream-mid);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.18s;
+  font-size: 1.5rem;
+}
+
+.profileLink:hover {
+  background: var(--cream-dark);
+}
+
+.profileLinkTitle {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+
+.profileLinkSub {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.arrow {
+  margin-left: auto;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.logoutBtn {
+  margin-top: 24px;
+  padding: 12px 32px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--cream-dark);
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s;
+}
+
+.logoutBtn:hover {
+  border-color: var(--cherry);
+  color: var(--cherry);
+}

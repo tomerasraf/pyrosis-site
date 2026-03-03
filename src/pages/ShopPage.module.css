@@ -1,0 +1,253 @@
+.page {
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.hero {
+  background: var(--forest);
+  color: var(--white);
+  text-align: center;
+  padding: 80px 24px 60px;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.92;
+  margin-bottom: 16px;
+}
+
+.heroSub {
+  font-size: 1.1rem;
+  opacity: 0.75;
+  font-family: var(--font-body);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.tagScroll {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.tagBtn {
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--cream-dark);
+  background: var(--white);
+  font-family: var(--font-condensed);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.tagBtn:hover {
+  border-color: var(--citrus);
+  color: var(--citrus);
+}
+
+.tagBtnActive {
+  background: var(--citrus);
+  border-color: var(--citrus);
+  color: var(--white);
+}
+
+.sortSelect {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--cream-dark);
+  background: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.18s;
+}
+
+.sortSelect:focus {
+  border-color: var(--citrus);
+}
+
+.resultCount {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 32px;
+  font-family: var(--font-condensed);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+/* Card */
+.card {
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid transparent;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  border-color: var(--c);
+  box-shadow: 0 12px 40px -8px color-mix(in srgb, var(--c) 30%, transparent);
+}
+
+.cardVisual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  background: var(--bg);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.blob {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: color-mix(in srgb, var(--c) 18%, transparent);
+  border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+  filter: blur(8px);
+}
+
+.cardIcon {
+  font-size: 5rem;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.12));
+}
+
+.cardTag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--c);
+  color: #fff;
+  font-family: var(--font-condensed);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.cardBody {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.flavorLine {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-family: var(--font-condensed);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.cardName {
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.tagRow {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  font-size: 0.72rem;
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--c) 12%, transparent);
+  color: var(--c);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.priceRow {
+  display: flex;
+  flex-direction: column;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.cals {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.addBtn {
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--c);
+  color: #fff;
+  font-family: var(--font-condensed);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  min-width: 90px;
+  transition: background 0.18s;
+}
+
+.addBtnDone {
+  background: var(--tropical);
+}
