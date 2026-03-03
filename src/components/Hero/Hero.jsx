@@ -78,7 +78,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          SPARKLING<br />
+          SPARKLING
           <AnimatePresence mode="wait">
             <motion.span
               key={flavor.color}
@@ -91,7 +91,7 @@ export default function Hero() {
             >
               {flavor.name.toUpperCase()}
             </motion.span>
-          </AnimatePresence><br />
+          </AnimatePresence>
           SODA
         </motion.h1>
 

@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import FizzParticles from '../Hero/FizzParticles'
 import styles from './Benefits.module.css'
 
 const items = [
@@ -15,6 +16,8 @@ export default function Benefits() {
 
   return (
     <section className={styles.section} id="benefits" ref={ref}>
+      <FizzParticles color="#a8c5a0" />
+
       {/* Wavy top divider */}
       <div className={styles.waveTop}>
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
