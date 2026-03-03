@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.drinkolipop.com)",
+      "Bash(for f in Videos/*.mp4)",
+      "Bash(do echo \"=== $f ===\")",
+      "Bash(ffprobe -v quiet -print_format json -show_streams \"$f\")",
+      "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); v=[s for s in d[''streams''] if s[''codec_type'']==''video''][0]; print\\(f''Duration: {v.get\\(\"\"duration\"\",\"\"?\"\"\\)}s | Size: {v[\"\"width\"\"]}x{v[\"\"height\"\"]} | Codec: {v[\"\"codec_name\"\"]}''\\)\")",
+      "Bash(done)",
+      "Bash(npx vite build)",
+      "Bash(node --version)",
+      "Bash(node scripts/generate-images.mjs)",
+      "Bash(node -e \":*)",
+      "Bash(npm run build)"
+    ]
+  }
+}

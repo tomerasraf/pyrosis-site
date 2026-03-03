@@ -1,0 +1,217 @@
+.section {
+  background: var(--cream-mid);
+  padding: 7rem 0 8rem;
+  position: relative;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+  color: var(--ink);
+  letter-spacing: -1.5px;
+}
+
+.title em { color: var(--citrus); }
+
+/* Main layout */
+.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1.5px solid rgba(26,18,8,0.08);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+
+.tab:hover { background: rgba(26,18,8,0.03); }
+
+.tabActive {
+  background: var(--white) !important;
+  border-color: color-mix(in srgb, var(--c) 35%, transparent) !important;
+}
+
+.tabMarker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 2px;
+}
+
+.tabEmoji { font-size: 1.3rem; }
+
+.tabName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+/* Detail panel */
+.panel {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2.5rem;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  align-items: center;
+  border: 1.5px solid color-mix(in srgb, var(--c) 15%, transparent);
+}
+
+.orbWrap {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--c) 6%, white);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.infoTop {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.infoEmoji { font-size: 2.5rem; }
+
+.infoName {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--c);
+  letter-spacing: -0.5px;
+}
+
+.infoSub {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.infoDesc {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 0.28rem 0.85rem;
+  border: 1.5px solid color-mix(in srgb, var(--c) 35%, transparent);
+  color: var(--c);
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.nutrition {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 1.25rem;
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  width: fit-content;
+}
+
+.nutriItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.nutriVal {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--c);
+  line-height: 1;
+}
+
+.nutriLabel {
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.shopBtn {
+  display: inline-flex;
+  padding: 0.85rem 1.9rem;
+  border-radius: var(--radius-pill);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.9rem;
+  width: fit-content;
+  transition: filter 0.2s;
+}
+
+.shopBtn:hover { filter: brightness(0.9); }
+
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: 1fr; }
+  .tabs { flex-direction: row; flex-wrap: wrap; }
+  .panel { grid-template-columns: 1fr; }
+  .orbWrap { width: 200px; height: 200px; margin: 0 auto; }
+}

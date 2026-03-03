@@ -1,0 +1,99 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Warm brand palette */
+  --cream:      #FFF7EE;
+  --cream-dark: #F5EDE0;
+  --cream-mid:  #FAF0E4;
+  --ink:        #1A1208;
+  --ink-soft:   #4A3728;
+  --muted:      #9C8878;
+
+  /* Flavor accent colors */
+  --citrus:   #FF5C1A;
+  --berry:    #C8255A;
+  --tropical: #00A67E;
+  --grape:    #6B24C2;
+  --lemon:    #E8B000;
+  --cherry:   #D62839;
+
+  /* UI */
+  --forest:   #1D4D38;
+  --sage:     #A8C5A0;
+  --peach:    #FFBF94;
+  --white:    #FFFFFF;
+
+  --font-display:    'Bebas Neue', 'Barlow Condensed', Impact, sans-serif;
+  --font-condensed:  'Barlow Condensed', 'Bebas Neue', sans-serif;
+  --font-body:       'Inter', -apple-system, sans-serif;
+
+  --radius-sm:   12px;
+  --radius-md:   20px;
+  --radius-lg:   32px;
+  --radius-pill: 999px;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;   /* Bebas Neue is single-weight, always looks bold */
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+h4, h5, h6 {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream-dark); }
+::-webkit-scrollbar-thumb { background: var(--citrus); border-radius: 3px; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

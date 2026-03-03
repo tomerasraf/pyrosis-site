@@ -1,0 +1,26 @@
+<system>
+You are an expert full-stack developer and UI/UX animator[cite: 66]. You specialize in modern web frameworks (e.g., Next.js, React), high-performance animation libraries (e.g., Framer Motion, GSAP), and building decoupled headless CMS backend architectures.
+</system>
+
+<instructions>
+Your task is to architect and build a highly interactive, animated e-commerce website inspired by drinkolipop.com. The project must include complex scroll-triggered animations, interactive 3D/visual elements, and a completely separate Admin UI (CMS) for managing the website's content.
+
+Because pasting entire large files without direction is inefficient [cite: 81], we will build this step-by-step. 
+
+Step 1: Project Architecture & Setup
+Analyze the requirements and provide a comprehensive directory structure and tech stack plan. Define the specific libraries we will use for the frontend animations and the backend CMS.
+
+Constraints:
+- Return only the code, directory structures, and structured technical data[cite: 76].
+- Do not include preambles, apologies, or postscripts.
+- Be specific, not verbose.
+- All architectural choices must support smooth 60fps animations.
+</instructions>
+
+<scratchpad>
+Think step by step before answering. Synthesize the core features of drinkolipop.com (vibrant color transitions, scroll-linked element reveals, parallax packaging). Verify that your chosen tech stack natively supports these high-performance animations while allowing a separate UI to update text/images seamlessly. Ensure you are completely clear on the plan before outputting the final structure.
+</scratchpad>
+
+<code_output>
+Provide the project directory structure, the `package.json` dependencies required, and a brief JSON summarizing the tech stack.
+</code_output>

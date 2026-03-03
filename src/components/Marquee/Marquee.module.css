@@ -1,0 +1,33 @@
+.band {
+  overflow: hidden;
+  padding: 0.9rem 0;
+  border-top: 1.5px solid rgba(0,0,0,0.08);
+  border-bottom: 1.5px solid rgba(0,0,0,0.08);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 28s linear infinite;
+  gap: 0;
+}
+
+.item {
+  display: inline-block;
+  padding: 0 1.2rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
+}

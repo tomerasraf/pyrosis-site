@@ -1,0 +1,294 @@
+/* ─── Base ─────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  background: var(--cream);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* ─── THE BLOB — the main graphic anchor ───────────────────── */
+.blob {
+  position: absolute;
+  right: -12%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 58%;
+  height: 120%;
+  border-radius: 44% 56% 60% 40% / 38% 38% 62% 62%;
+  z-index: 0;
+  will-change: background-color;
+  overflow: hidden;
+}
+
+/* ─── MASKED PRODUCT PHOTO ──────────────────────────────────── */
+.photoWrap {
+  position: absolute;
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36%;
+  aspect-ratio: 3 / 4;
+  z-index: 1;
+  border-radius: 50% 50% 48% 52% / 55% 55% 45% 45%;
+  overflow: hidden;
+  box-shadow: 0 28px 72px rgba(0,0,0,0.22), 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.productPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.photoOverlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* ─── 3D CAN — floats centered on the blob ─────────────────── */
+.canWrap {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 52%;
+  z-index: 2;             /* above blob, below text */
+  pointer-events: none;
+}
+
+/* ─── FLAVOR BADGE — pinned inside blob area ───────────────── */
+.flavorBadge {
+  position: absolute;
+  top: 2.2rem;
+  right: 3rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-condensed);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ─── LEFT TEXT COLUMN ──────────────────────────────────────── */
+.textCol {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 8rem 0 6rem 5vw;
+  max-width: 560px;
+}
+
+.kicker {
+  font-family: var(--font-condensed);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(4.5rem, 9vw, 9.5rem);
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.accent {
+  display: block;
+  transition: color 0.4s ease;
+}
+
+.sub {
+  font-family: var(--font-condensed);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ─── BUTTONS ───────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 2.2rem;
+  border-radius: var(--radius-pill);
+  color: var(--white);
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: filter 0.2s, transform 0.15s;
+}
+
+.btnPrimary:hover { filter: brightness(0.9); }
+
+.btnGhost {
+  font-family: var(--font-condensed);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-bottom: 1.5px solid rgba(74, 55, 40, 0.25);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btnGhost:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+/* ─── FLAVOR PICKER ─────────────────────────────────────────── */
+.picker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  height: 10px;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ─── STATS BAR — pinned to bottom ─────────────────────────── */
+.statsBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid rgba(26, 18, 8, 0.08);
+  background: rgba(255, 247, 238, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.statItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 1rem;
+  border-right: 1px solid rgba(26, 18, 8, 0.07);
+}
+
+.statItem:last-child { border-right: none; }
+
+.statN {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  transition: color 0.6s ease;
+}
+
+.statL {
+  font-family: var(--font-condensed);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .blob {
+    right: -20%;
+    top: auto;
+    bottom: -10%;
+    transform: none;
+    width: 110%;
+    height: 55%;
+    border-radius: 50% 50% 0 0 / 60% 60% 0 0;
+  }
+
+  .photoWrap {
+    display: none;
+  }
+
+  .canWrap {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    order: -1;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    pointer-events: none;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .textCol {
+    padding: 7rem 1.5rem 2rem;
+    max-width: 100%;
+  }
+
+  .headline { font-size: clamp(3rem, 11vw, 5rem); }
+
+  .flavorBadge {
+    top: auto;
+    bottom: 5rem;
+    right: 1.5rem;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0,0,0,0.1);
+  }
+
+  .statsBar {
+    position: relative;
+    bottom: auto;
+    margin-top: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .statsBar { flex-wrap: wrap; }
+  .statItem { flex: 1 1 50%; border-bottom: 1px solid rgba(26,18,8,0.07); }
+  .statItem:last-child { border-right: none; }
+}

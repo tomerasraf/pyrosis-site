@@ -1,0 +1,225 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 3rem;
+  transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+}
+
+.nav.scrolled {
+  background: rgba(255, 247, 238, 0.92);
+  backdrop-filter: blur(16px);
+  padding: 0.9rem 3rem;
+  box-shadow: 0 1px 0 rgba(26, 18, 8, 0.08);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+  line-height: 1;
+}
+
+.logoMark {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.9rem;
+  color: var(--forest);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.logoSup {
+  font-size: 0.55rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  color: var(--muted);
+  align-self: flex-start;
+  margin-top: 6px;
+  letter-spacing: 0;
+}
+
+/* Nav links */
+.links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: color 0.2s;
+  position: relative;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--citrus);
+  border-radius: 1px;
+  transition: width 0.25s ease;
+}
+
+.link:hover { color: var(--ink); }
+.link:hover::after { width: 100%; }
+
+/* Right side */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ctaBtn {
+  padding: 0.55rem 1.4rem;
+  background: var(--forest);
+  color: var(--white);
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.ctaBtn:hover {
+  background: var(--ink);
+  transform: translateY(-1px);
+}
+
+/* Account button */
+.accountBtn {
+  font-family: var(--font-condensed);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--cream-dark);
+  transition: all 0.2s;
+}
+.accountBtn:hover {
+  border-color: var(--forest);
+  color: var(--forest);
+}
+
+/* Cart button */
+.cartBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--ink);
+  transition: background 0.2s;
+}
+.cartBtn:hover { background: var(--cream-dark); }
+
+.cartBadge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  background: var(--citrus);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 0.62rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Hamburger */
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.barTop  { transform: translateY(7px) rotate(45deg); }
+.barMid  { opacity: 0; transform: scaleX(0); }
+.barBot  { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu */
+.mobileMenu {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: var(--cream);
+  border-bottom: 1px solid var(--cream-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: 1.5rem 1.5rem 2rem;
+}
+
+.mobileLink {
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--cream-dark);
+  transition: color 0.15s;
+}
+
+.mobileLink:last-of-type { border-bottom: none; }
+.mobileLink:hover { color: var(--citrus); }
+
+.mobileCta {
+  margin-top: 1.2rem;
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: var(--forest);
+  color: var(--white);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.mobileCta:hover { background: var(--ink); }
+
+@media (max-width: 768px) {
+  .nav { padding: 1rem 1.25rem; }
+  .nav.scrolled { padding: 0.8rem 1.25rem; }
+  .links { display: none; }
+  .ctaBtn { display: none; }
+  .menuToggle { display: flex; }
+}

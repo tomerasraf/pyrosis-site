@@ -1,0 +1,168 @@
+.section {
+  position: relative;
+  background: var(--forest);
+  padding: 5rem 0 7rem;
+  color: var(--white);
+}
+
+.waveTop {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  line-height: 0;
+}
+
+.waveTop svg { width: 100%; height: 100%; }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  color: var(--white);
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+}
+
+.title em { color: var(--peach); }
+
+.sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  max-width: 440px;
+  line-height: 1.7;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 1.8rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: color-mix(in srgb, var(--c) 40%, transparent);
+}
+
+.cardBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--c);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .cardBar { transform: scaleX(1); }
+
+.iconCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--c) 15%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.cardDesc {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+  flex: 1;
+}
+
+/* Big claim */
+.claim {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.5rem;
+  flex-wrap: wrap;
+}
+
+.claimNum {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--peach);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.claimText {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.8);
+  max-width: 340px;
+  line-height: 1.55;
+  flex: 1;
+}
+
+.claimLink {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--peach);
+  border-bottom: 1px solid rgba(255,191,148,0.4);
+  padding-bottom: 2px;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+}
+
+.claimLink:hover { border-color: var(--peach); }
+
+@media (max-width: 1024px) { .cards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px)  { .cards { grid-template-columns: 1fr; } .claim { flex-direction: column; gap: 1rem; } }
