@@ -1,0 +1,69 @@
+# Build output & caches
+dist/
+.cache/
+.parcel-cache/
+.vite/
+*.tsbuildinfo
+
+# Dependencies (large, auto-generated)
+node_modules/
+server/node_modules/
+
+# Media assets (binary, not code)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.svg
+*.ico
+*.woff
+*.woff2
+*.ttf
+*.eot
+*.otf
+*.mp4
+*.webm
+*.mov
+*.mp3
+*.wav
+images/
+videos/
+public/
+
+# Lock files (auto-generated, noisy)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+server/package-lock.json
+
+# Environment / secrets
+.env
+.env.*
+server/.env
+
+# Logs & reports
+*.log
+logs/
+coverage/
+*.lcov
+
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Git internals
+.git/
+
+# Vite timestamp files
+vite.config.js.timestamp-*
+
+# Type declaration noise
+*.d.ts
+
+# Test snapshots
+**/__snapshots__/
+*.snap
