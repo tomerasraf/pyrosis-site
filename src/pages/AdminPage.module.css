@@ -1,0 +1,561 @@
+/* ── Layout ─────────────────────────────────────────────── */
+.admin {
+  min-height: 100vh;
+  background: #1A1208;
+  color: #F5EDE0;
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #120D06;
+  border-bottom: 1px solid #3A2818;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  color: #FF5C1A;
+}
+
+.badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: rgba(255, 92, 26, 0.15);
+  color: #FF5C1A;
+  border: 1px solid rgba(255, 92, 26, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.saved {
+  font-size: 0.75rem;
+  color: #A8C5A0;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.savedVisible {
+  opacity: 1;
+}
+
+.btnReset {
+  padding: 0.45rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9C8878;
+  border: 1px solid #3A2818;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btnReset:hover {
+  color: #FF5C1A;
+  border-color: #FF5C1A;
+}
+
+.btnBack {
+  padding: 0.45rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #F5EDE0;
+  border: 1px solid #3A2818;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.btnBack:hover {
+  border-color: #F5EDE0;
+}
+
+/* ── Tabs ────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #3A2818;
+  background: #120D06;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9C8878;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  transition: color 0.2s;
+}
+
+.tab:hover { color: #F5EDE0; }
+
+.tabActive {
+  color: #FF5C1A;
+  border-bottom-color: #FF5C1A;
+}
+
+/* ── Content ─────────────────────────────────────────────── */
+.content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Shared field styles (used by all tab components) ───── */
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-condensed);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #FF5C1A;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #3A2818;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9C8878;
+  margin-bottom: 0.35rem;
+}
+
+.input {
+  width: 100%;
+  background: #241810;
+  border: 1px solid #3A2818;
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  color: #F5EDE0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #FF5C1A;
+}
+
+.textarea {
+  width: 100%;
+  background: #241810;
+  border: 1px solid #3A2818;
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  color: #F5EDE0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  resize: vertical;
+  min-height: 72px;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  border-color: #FF5C1A;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.row3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ── Card (collapsible) ─────────────────────────────────── */
+.card {
+  background: #241810;
+  border: 1px solid #3A2818;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+
+.cardHeader:hover {
+  background: rgba(255, 92, 26, 0.05);
+}
+
+.cardChevron {
+  margin-left: auto;
+  color: #9C8878;
+  font-size: 0.75rem;
+  transition: transform 0.2s;
+}
+
+.cardChevronOpen {
+  transform: rotate(180deg);
+}
+
+.cardBody {
+  padding: 1.25rem;
+  border-top: 1px solid #3A2818;
+}
+
+/* ── Toggle ─────────────────────────────────────────────── */
+.toggle {
+  position: relative;
+  display: inline-flex;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggleTrack {
+  position: absolute;
+  inset: 0;
+  background: #3A2818;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.toggle input:checked + .toggleTrack {
+  background: #A8C5A0;
+}
+
+.toggleTrack::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  background: #F5EDE0;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle input:checked + .toggleTrack::after {
+  transform: translateX(16px);
+}
+
+/* ── Color row ───────────────────────────────────────────── */
+.colorRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #2A1F14;
+}
+
+.colorSwatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+
+.colorVarName {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #9C8878;
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.colorLabel {
+  font-size: 0.85rem;
+  color: #F5EDE0;
+  flex: 1;
+}
+
+.colorInputWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.colorPicker {
+  width: 36px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #3A2818;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.colorHex {
+  width: 88px;
+  background: #241810;
+  border: 1px solid #3A2818;
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  color: #F5EDE0;
+  font-family: monospace;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.colorHex:focus { border-color: #FF5C1A; }
+
+/* ── Sortable flavor list ────────────────────────────────── */
+.flavorRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #241810;
+  border: 1px solid #3A2818;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  cursor: grab;
+}
+
+.flavorRow:active { cursor: grabbing; }
+
+.flavorDrag {
+  color: #9C8878;
+  font-size: 0.85rem;
+  cursor: grab;
+  flex-shrink: 0;
+}
+
+.flavorInputs {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.flavorInputs .input {
+  flex: 1;
+  min-width: 80px;
+}
+
+.btnRemove {
+  background: transparent;
+  border: 1px solid #3A2818;
+  border-radius: 6px;
+  color: #9C8878;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.btnRemove:hover { color: #FF5C1A; border-color: #FF5C1A; }
+
+.btnAdd {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.55rem;
+  background: transparent;
+  border: 1px dashed #3A2818;
+  border-radius: 10px;
+  color: #9C8878;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btnAdd:hover { color: #FF5C1A; border-color: #FF5C1A; }
+
+/* ── Stats table ─────────────────────────────────────────── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.statsGrid .label {
+  text-align: right;
+  padding-right: 0.5rem;
+}
+
+/* ── Marquee pill editor ─────────────────────────────────── */
+.pillWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: #241810;
+  border: 1px solid #3A2818;
+  border-radius: 10px;
+  padding: 0.75rem;
+  min-height: 56px;
+  margin-bottom: 0.75rem;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #3A2818;
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  color: #F5EDE0;
+}
+
+.pillX {
+  background: transparent;
+  border: none;
+  color: #9C8878;
+  cursor: pointer;
+  font-size: 0.7rem;
+  padding: 0;
+  line-height: 1;
+}
+
+.pillX:hover { color: #FF5C1A; }
+
+.pillAddRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pillAddRow .input {
+  flex: 1;
+}
+
+.btnSmall {
+  padding: 0.55rem 1rem;
+  background: #FF5C1A;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter 0.2s;
+}
+
+.btnSmall:hover { filter: brightness(0.9); }
+
+/* ── Footer nav link editor ──────────────────────────────── */
+.linkCat {
+  margin-bottom: 1.25rem;
+}
+
+.linkCatTitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9C8878;
+  margin-bottom: 0.5rem;
+}
+
+.linkItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.linkItem .input {
+  flex: 1;
+}
+
+/* ── Media tab ───────────────────────────────────────────── */
+.mediaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mediaRow .input {
+  flex: 1;
+}
+
+.mediaPreview {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 240px;
+  border: 1px solid #3A2818;
+}
+
+.mediaPreviewImg {
+  display: block;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
