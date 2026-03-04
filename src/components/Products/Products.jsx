@@ -2,10 +2,11 @@ import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
-import { PRODUCTS as products } from '../../data/products'
+import { PRODUCTS as BASE_PRODUCTS } from '../../data/products'
+import { useSite } from '../../context/SiteContext'
 import styles from './Products.module.css'
 
-function Card({ p, i }) {
+function Card({ p, i, productImage }) {
   const ref = useRef()
   const inView = useInView(ref, { once: true, margin: '-60px' })
   const { dispatch } = useCart()
@@ -28,7 +29,10 @@ function Card({ p, i }) {
     >
       <Link to={`/product/${p.id}`} className={styles.cardVisual}>
         <span className={styles.blob} />
-        <span className={styles.cardIcon}>{p.icon}</span>
+        {productImage
+          ? <img src={productImage} alt={p.name} className={styles.cardImg} />
+          : <span className={styles.cardIcon}>{p.icon}</span>
+        }
         <span className={styles.cardTag}>{p.tag}</span>
       </Link>
 
@@ -70,6 +74,10 @@ function Card({ p, i }) {
 export default function Products() {
   const ref = useRef()
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const { config } = useSite()
+  const { eyebrow, subtitle, viewAllText, overrides } = config.products
+  const productImages = config.media?.productImages ?? {}
+  const products = BASE_PRODUCTS.map(p => ({ ...p, ...(overrides[p.id] ?? {}) }))
 
   return (
     <section className={styles.section} id="flavors">
@@ -81,22 +89,23 @@ export default function Products() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65 }}
         >
-          <span className={styles.eyebrow}>The Lineup</span>
+          <span className={styles.eyebrow}>{eyebrow}</span>
           <h2 className={styles.title}>
             THE<br />LINEUP
           </h2>
           <p className={styles.subtitle}>
-            Six flavors. All real. Zero compromise.<br />
-            Refreshing &amp; all-natural — every single one.
+            {subtitle.split('\n').map((line, i) => (
+              <span key={i}>{line}{i < subtitle.split('\n').length - 1 && <br />}</span>
+            ))}
           </p>
         </motion.div>
 
         <div className={styles.grid}>
-          {products.map((p, i) => <Card key={p.id} p={p} i={i} />)}
+          {products.map((p, i) => <Card key={p.id} p={p} i={i} productImage={productImages[p.id] || ''} />)}
         </div>
 
         <div className={styles.viewAll}>
-          <a href="#shop" className={styles.viewBtn}>View full collection →</a>
+          <a href="#shop" className={styles.viewBtn}>{viewAllText}</a>
         </div>
       </div>
     </section>

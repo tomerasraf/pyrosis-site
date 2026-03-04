@@ -11,7 +11,8 @@
       "Bash(node --version)",
       "Bash(node scripts/generate-images.mjs)",
       "Bash(node -e \":*)",
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "Bash(ls c:UsersDaniel GoralikDocumentsGitHubpyrosis-site/.claude*)"
     ]
   }
 }
