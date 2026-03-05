@@ -106,10 +106,12 @@
 .cardImg {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   position: absolute;
   inset: 0;
   z-index: 1;
+  padding: 1rem;
+  mix-blend-mode: multiply;
 }
 
 .cardTag {
@@ -203,8 +205,13 @@
   transition: filter 0.2s;
 }
 
-.addBtn:hover { filter: brightness(0.9); }
-.addBtn.addBtnDone { background: var(--forest); }
+.addBtn:hover {
+  filter: brightness(0.9);
+}
+
+.addBtn.addBtnDone {
+  background: var(--forest);
+}
 
 /* View all */
 .viewAll {
@@ -226,5 +233,14 @@
   border-color: var(--citrus);
 }
 
-@media (max-width: 1024px) { .grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px)  { .grid { grid-template-columns: 1fr; } }
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

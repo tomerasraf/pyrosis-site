@@ -151,7 +151,7 @@ export default function Hero() {
               onClick={() => setIdx(i)}
               className={styles.dot}
               animate={{
-                width:      i === idx ? 32 : 10,
+                width: i === idx ? 32 : 10,
                 background: i === idx ? f.color : '#D4C5B4',
                 borderRadius: 5,
               }}

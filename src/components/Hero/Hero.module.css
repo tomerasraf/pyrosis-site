@@ -33,7 +33,7 @@
   z-index: 1;
   border-radius: 50% 50% 48% 52% / 55% 55% 45% 45%;
   overflow: hidden;
-  box-shadow: 0 28px 72px rgba(0,0,0,0.22), 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.22), 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .productPhoto {
@@ -59,7 +59,8 @@
   top: 0;
   bottom: 0;
   width: 52%;
-  z-index: 2;             /* above blob, below text */
+  z-index: 2;
+  /* above blob, below text */
   pointer-events: none;
 }
 
@@ -153,7 +154,9 @@
   transition: filter 0.2s, transform 0.15s;
 }
 
-.btnPrimary:hover { filter: brightness(0.9); }
+.btnPrimary:hover {
+  filter: brightness(0.9);
+}
 
 .btnGhost {
   font-family: var(--font-condensed);
@@ -211,7 +214,9 @@
   border-right: 1px solid rgba(26, 18, 8, 0.07);
 }
 
-.statItem:last-child { border-right: none; }
+.statItem:last-child {
+  border-right: none;
+}
 
 .statN {
   font-family: var(--font-display);
@@ -269,14 +274,16 @@
     max-width: 100%;
   }
 
-  .headline { font-size: clamp(3rem, 11vw, 5rem); }
+  .headline {
+    font-size: clamp(3rem, 11vw, 5rem);
+  }
 
   .flavorBadge {
     bottom: 7rem;
     right: 1.5rem;
     color: var(--ink);
     background: rgba(255, 255, 255, 0.7);
-    border-color: rgba(0,0,0,0.1);
+    border-color: rgba(0, 0, 0, 0.1);
   }
 
   .statsBar {
@@ -287,7 +294,16 @@
 }
 
 @media (max-width: 500px) {
-  .statsBar { flex-wrap: wrap; }
-  .statItem { flex: 1 1 50%; border-bottom: 1px solid rgba(26,18,8,0.07); }
-  .statItem:last-child { border-right: none; }
+  .statsBar {
+    flex-wrap: wrap;
+  }
+
+  .statItem {
+    flex: 1 1 50%;
+    border-bottom: 1px solid rgba(26, 18, 8, 0.07);
+  }
+
+  .statItem:last-child {
+    border-right: none;
+  }
 }

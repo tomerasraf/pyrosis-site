@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useCart } from '../context/CartContext'
+import { useSite } from '../context/SiteContext'
 import { getProductById, PRODUCTS } from '../data/products'
 import styles from './ProductPage.module.css'
 
@@ -15,7 +16,10 @@ export default function ProductPage() {
   const { id } = useParams()
   const navigate = useNavigate()
   const { dispatch } = useCart()
+  const { config } = useSite()
+  const productImages = config.media?.productImages ?? {}
   const product = getProductById(id)
+  const productImage = productImages[product?.id]
   const [packIdx, setPackIdx] = useState(0)
   const [added, setAdded] = useState(false)
 
@@ -68,7 +72,10 @@ export default function ProductPage() {
         >
           <div className={styles.visualInner}>
             <span className={styles.blob} />
-            <span className={styles.mainIcon}>{product.icon}</span>
+            {productImage
+              ? <img src={productImage} alt={product.name} className={styles.mainImg} />
+              : <span className={styles.mainIcon}>{product.icon}</span>
+            }
             <span className={styles.tagBadge}>{product.tag}</span>
           </div>
         </motion.div>

@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '../context/CartContext'
+import { useSite } from '../context/SiteContext'
 import { PRODUCTS } from '../data/products'
 import styles from './ShopPage.module.css'
 
@@ -15,7 +16,7 @@ const SORT_OPTIONS = [
   { value: 'cals-asc', label: 'Calories: Low → High' },
 ]
 
-function ProductCard({ p }) {
+function ProductCard({ p, productImage }) {
   const { dispatch } = useCart()
   const [added, setAdded] = useState(false)
 
@@ -38,7 +39,10 @@ function ProductCard({ p }) {
     >
       <Link to={`/product/${p.id}`} className={styles.cardVisual}>
         <span className={styles.blob} />
-        <span className={styles.cardIcon}>{p.icon}</span>
+        {productImage
+          ? <img src={productImage} alt={p.name} className={styles.cardImg} />
+          : <span className={styles.cardIcon}>{p.icon}</span>
+        }
         <span className={styles.cardTag}>{p.tag}</span>
       </Link>
       <div className={styles.cardBody}>
@@ -82,14 +86,16 @@ function ProductCard({ p }) {
 }
 
 export default function ShopPage() {
+  const { config } = useSite()
+  const productImages = config.media?.productImages ?? {}
   const [activeTag, setActiveTag] = useState('All')
   const [sort, setSort] = useState('default')
 
   const filtered = useMemo(() => {
     let list = activeTag === 'All' ? PRODUCTS : PRODUCTS.filter(p => p.tags.includes(activeTag))
-    if (sort === 'price-asc')  list = [...list].sort((a, b) => a.price - b.price)
+    if (sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price)
     if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price)
-    if (sort === 'cals-asc')   list = [...list].sort((a, b) => a.cals - b.cals)
+    if (sort === 'cals-asc') list = [...list].sort((a, b) => a.cals - b.cals)
     return list
   }, [activeTag, sort])
 
@@ -142,7 +148,7 @@ export default function ShopPage() {
 
         <motion.div className={styles.grid} layout>
           <AnimatePresence mode="popLayout">
-            {filtered.map(p => <ProductCard key={p.id} p={p} />)}
+            {filtered.map(p => <ProductCard key={p.id} p={p} productImage={productImages[p.id] || ''} />)}
           </AnimatePresence>
         </motion.div>
       </div>
